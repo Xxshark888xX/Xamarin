@@ -2,3 +2,5 @@
 1.1
 [build]
 680
+[erase_settings]
+false

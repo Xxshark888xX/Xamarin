@@ -3,11 +3,13 @@
 [version]
 1.0
 [build]
-750
+681
 [erase_settings]
 false
 [change_log]
-<#Lorem ipsum dolor sit amet, 
+<#Long Comment
+
+Lorem ipsum dolor sit amet, 
 consectetur adipiscing elit, 
 sed do eiusmod tempor incididunt ut labore 
 et dolore magna aliqua. Sed tempus urna et pharetra 
@@ -22,4 +24,4 @@ Cras fermentum odio eu feugiat pretium nibh ipsum consequat.
 Eleifend quam adipiscing vitae proin sagittis. Vehicula ipsum 
 a arcu cursus vitae congue mauris rhoncus aenean. Non curabitur 
 gravida arcu ac tortor dignissim convallis aenean. Amet venenatis 
-urna cursus eget nunc scelerisque viverra mauris. Molestie nunc non blandit massa enim nec.#>
+urna cursus eget nunc scelerisque viverra mauris. Molestie nunc non blandit massa enim nec.#

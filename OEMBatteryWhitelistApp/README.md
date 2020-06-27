@@ -28,7 +28,7 @@ of the autostart permissiong manager.
 # Usage
 
 ```c#
-OEMBatteryWhitelist batteryWhitelist = new OEMBatteryWhitelist(Android.App.Application.Context, ref batteryWhitelistEx);
+OEMBatteryWhitelist batteryWhitelist = new OEMBatteryWhitelist(Android.App.Application.Context);
 
 if (batteryWhitelist.CanRequestPermissions) {
   /* INFORM HERE THE USER WITH A DISPLAY ALERT OR WHATEVER METHOD YOU LIKE TO USE */

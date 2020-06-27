@@ -93,8 +93,8 @@ namespace CGSJDSportsNotification.Droid {
                         Ticket t = tkts[i];
 
                         // Checks only the tkts with the 'open' or 'new' status
-                        //if (t.Status.ToLower() == "open" || t.Status.ToLower() == "new") {
-                        if (t.Status.Length > 0) { //-- Used for testing
+                        if (t.Status.ToLower() == "open" || t.Status.ToLower() == "new") {
+                        //if (t.Status.Length > 0) { //-- Used for testing
                             // The first and fastest step is to check the tkt title
                             if (t.Title.ToLower().Contains(country)) {
                                 H.DisplayNotification(t.ID, t.LastUpdated, t.Title, t.Status, t.Owner, country, t.Link);

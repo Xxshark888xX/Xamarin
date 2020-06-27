@@ -1,2 +1,2 @@
 # Xamarin
-Used to store some minor libs and to extend app functionality
+Mobile apps and libs created using Visual Studio Xamarin

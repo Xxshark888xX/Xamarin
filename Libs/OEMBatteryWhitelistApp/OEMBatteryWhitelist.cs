@@ -117,8 +117,7 @@ namespace CGSJDSportsNotification {
         public bool CanRequestPermissions { get { return IsRequestPermissionsAvailable; } }
 
         /// <summary>
-        /// Returns false when the process failed
-        /// <para>Returns null when the operation succeeded and the exception object when failed</para>
+        /// <Returns null when the operation succeeded and the exception object when failed
         /// </summary>
         public Exception RequestPermissions() {
             return _requestPermissions() == true ? null : Exception;

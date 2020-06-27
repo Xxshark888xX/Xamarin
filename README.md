@@ -1,2 +1,2 @@
 # Xamarin
-Mobile apps created using Visual Studio Xamarin
+Mobile apps and libs created using Visual Studio Xamarin

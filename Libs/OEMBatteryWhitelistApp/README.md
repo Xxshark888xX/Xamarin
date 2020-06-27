@@ -1,7 +1,7 @@
 # OEMBatteryWhitelist (Original known as: [AutoStart](https://github.com/judemanutd/AutoStarter))
 
 # Xamarin version
-Library ported to Xamarin by [Adi-Marian Mutu](https://github.com/Xxshark888xX), all the thanks and credits should go to [judemanutd](https://github.com/judemanutd)
+Library ported to Xamarin by [Adi-Marian Mutu](https://github.com/Xxshark888xX), all the thanks and credits should go to [judemanutd](https://github.com/judemanutd) for the original lib written in Kotlin
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://opensource.org/licenses/MIT) 
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)

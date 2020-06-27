@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cgsjdsportsnotification="clr-namespace:CGSJDSportsNotification"
+             mc:Ignorable="d"
+             x:Class="CGSJDSportsNotification.MainPage"
+             NavigationPage.HasNavigationBar="false">
+
+    <ScrollView>
+        <StackLayout>
+            <!-- Application Title -->
+            <Label
+                Margin="0, 5, 0, 0"
+                
+                Text="CGS - JD Sports Queue Notification" 
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                FontSize="Title"
+                FontAttributes="Bold"/>
+            <!-- Application Title divider -->
+            <BoxView
+                HeightRequest="2"
+                Color="Black"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!-- RT User name -->
+                <Label
+                    Margin="5, 0, 0, 0"
+                    Grid.Row="0"
+                    
+                    Text="RT Username:"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"/>
+                <Entry
+                    x:Name="rtUser_entry"
+                
+                    Grid.Row="1"
+                    Placeholder="Type your username..."/>
+                <!-- RT User password -->
+                <Label
+                    Margin="5, 0, 0, 0"
+                    Grid.Row="2"
+                    
+                    Text="RT Password:"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"/>
+                <Entry
+                    x:Name="rtPass_entry"
+            
+                    Grid.Row="3"
+                    IsPassword="true" 
+                    Placeholder="Type your password..."/>
+                <!-- Monitoring Settings -->
+                <BoxView
+                    Grid.Row="4"
+                    
+                    HeightRequest="1"
+                    Color="Black"/>
+                <Label
+                    Grid.Row="5"
+                    
+                    Text="MONITORING SETTINGS"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Start"
+                    FontSize="Medium"
+                    FontAttributes="Bold"/>
+                <BoxView
+                    Grid.Row="6"
+                    
+                    HeightRequest="1"
+                    Color="Black"/>
+
+                <!-- BackSearch -->
+                <Grid Grid.Row="7">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label
+                        Margin="2, 0, 0, 0"
+                        Grid.Row="0" Grid.Column="0" 
+                        
+                        Text="Search open tickets which are not older than"
+                        FontAttributes="Bold"
+                        
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="End"/>
+                    
+                    <Slider
+                        x:Name="searchTimeframe_slide"
+                        Grid.Row="1" Grid.Column="0"
+                        
+                        Maximum="720.0"
+                        Minimum="1.0"
+                        Value="360.0"
+                        ValueChanged="SearchTimeFrameValueChanged"
+                        
+                        MinimumTrackColor="SteelBlue"
+                        MaximumTrackColor="Black"
+                        HorizontalOptions="FillAndExpand"/>
+
+                    <BoxView
+                        Grid.Row="2" Grid.Column="0" 
+                    
+                        Margin="110, 0, 110, 0"
+                        HeightRequest="1"
+                        Color="Gray"/>
+                    <BoxView
+                        Grid.Row="3" Grid.Column="0" 
+                    
+                        Margin="80, 0, 80, 0"
+                        HeightRequest="1"
+                        Color="LightGray"/>
+                    <BoxView
+                        Grid.Row="4" Grid.Column="0" 
+                    
+                        Margin="50, 0, 50, 0"
+                        HeightRequest="1"
+                        Color="Gray"/>
+
+                    <Label
+                        x:Name="searchTimeFrame_lbl"
+                        Margin="2, 0, 0, 0"
+                        Grid.Row="5" Grid.Column="0" 
+                        
+                        Text="6 hour(s)"
+                        FontAttributes="Bold"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Start"/>
+
+                    <BoxView
+                        Grid.Row="6" Grid.Column="0" 
+                    
+                        Margin="50, 0, 50, 0"
+                        HeightRequest="1"
+                        Color="Gray"/>
+                    <BoxView
+                        Grid.Row="7" Grid.Column="0" 
+                    
+                        Margin="80, 0, 80, 0"
+                        HeightRequest="1"
+                        Color="LightGray"/>
+                    <BoxView
+                        Grid.Row="8" Grid.Column="0" 
+                    
+                        Margin="110, 0, 110, 0"
+                        HeightRequest="1"
+                        Color="Gray"/>
+                </Grid>
+
+                <!-- Refresh Rate -->
+                <Grid Grid.Row="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label
+                        Margin="2, 0, 0, 0"
+                        Grid.Row="0" Grid.Column="0" 
+                        
+                        Text="Search Refresh Rate"
+                        FontAttributes="Bold"
+                        
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="End"/>
+
+                    <Slider
+                        x:Name="searchRefreshRate_slide"
+                        Grid.Row="1" Grid.Column="0"
+                        
+                        Maximum="120.0"
+                        Minimum="15.0"
+                        Value="30.0"
+                        ValueChanged="SearchRefreshRateValueChanged"
+                        
+                        MinimumTrackColor="SteelBlue"
+                        MaximumTrackColor="Black"
+                        HorizontalOptions="FillAndExpand"/>
+
+                    <BoxView
+                        Grid.Row="2" Grid.Column="0" 
+                    
+                        Margin="110, 0, 110, 0"
+                        HeightRequest="1"
+                        Color="Gray"/>
+                    <BoxView
+                        Grid.Row="3" Grid.Column="0" 
+                    
+                        Margin="80, 0, 80, 0"
+                        HeightRequest="1"
+                        Color="LightGray"/>
+                    <BoxView
+                        Grid.Row="4" Grid.Column="0" 
+                    
+                        Margin="50, 0, 50, 0"
+                        HeightRequest="1"
+                        Color="Gray"/>
+
+                    <Label
+                        x:Name="searchRefreshRate_lbl"
+                        Margin="2, 0, 0, 0"
+                        Grid.Row="5" Grid.Column="0" 
+                        
+                        Text="30 minutes"
+                        FontAttributes="Bold"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Start"/>
+
+                    <BoxView
+                        Grid.Row="6" Grid.Column="0" 
+                    
+                        Margin="50, 0, 50, 0"
+                        HeightRequest="1"
+                        Color="Gray"/>
+                    <BoxView
+                        Grid.Row="7" Grid.Column="0" 
+                    
+                        Margin="80, 0, 80, 0"
+                        HeightRequest="1"
+                        Color="LightGray"/>
+                    <BoxView
+                        Grid.Row="8" Grid.Column="0" 
+                    
+                        Margin="110, 0, 110, 0"
+                        HeightRequest="1"
+                        Color="Gray"/>
+                </Grid>
+
+                <!-- Country -->
+                <Grid Grid.Row="9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Margin="2, 0, 0, 0"
+                        Grid.Row="1" Grid.Column="0" 
+                        
+                        Text="Country"
+                        FontAttributes="Bold"
+                        
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="End"/>
+
+                    <Button
+                        x:Name="countryPickerSelect_btn"
+                        Grid.Row="2"
+            
+                        Text="SELECT"
+                        Clicked="CountryPickerSelectButtonOnClick"
+                        
+                        BackgroundColor="LightSteelBlue"
+ 
+                        MinimumHeightRequest="35"
+                        HeightRequest="35"
+                        
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"/>
+
+                    <BoxView
+                        Grid.Row="3" Grid.Column="0" 
+                    
+                        Margin="50, 0, 50, 0"
+                        HeightRequest="1"
+                        Color="Gray"/>
+
+                    <Picker
+                        IsVisible="False"
+                        x:Name="countries_picker"
+                        
+                        SelectedIndexChanged="CountryPickerSelectedIndexChanged"
+                        Grid.Row="2" Grid.Column="0"
+                        Title="Which country do you want to be monitored?">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Italy</x:String>
+                                <x:String>Spain</x:String>
+                                <x:String>Germany</x:String>
+                                <x:String>Portugal</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+
+                <!-- Show Unknown Tickets -->
+                <Grid Grid.Row="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Margin="2, 0, 0, 0"
+                        Grid.Row="0" Grid.Column="0" 
+                        
+                        Text="Shows tickets without specific country"
+                        FontAttributes="Bold"/>
+
+                    <Switch
+                        x:Name="searchUnknownCountry_chbox"
+                
+                        Grid.Row="0" Grid.Column="1"
+                        IsToggled="true"
+                        HorizontalOptions="End"/>
+                </Grid>
+
+                <BoxView
+                    Grid.Row="11"
+                    
+                    Margin="50, 0, 50, 0"
+                    HeightRequest="1"
+                    Color="Gray"/>
+
+                <!-- Start/Stop monitoring button -->
+                <Button
+                    x:Name="monitoring_btn"
+                    Grid.Row="12"
+                    
+                    Clicked="SettingsMonitoringOnClick"
+                    PropertyChanged="SettingsMonitoringChanged"
+                    Text="START"
+                    
+                    BackgroundColor="LightGreen"
+                    MinimumHeightRequest="35"
+                    HeightRequest="35"
+
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"/>
+                
+                <!-- App Settings -->
+                <BoxView
+                    Grid.Row="13"
+                    
+                    HeightRequest="1"
+                    Color="Black"/>
+                <Label
+                    Grid.Row="14"
+                    
+                    Text="APP SETTINGS"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Start"
+                    FontSize="Medium"
+                    FontAttributes="Bold"/>
+                <BoxView
+                    Grid.Row="15"
+                    
+                    HeightRequest="1"
+                    Color="Black"/>
+                <Grid Grid.Row="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Auto Update -->
+                    <Label
+                        Margin="2, 0, 0, 0"
+                        Grid.Row="1" Grid.Column="0"
+                        
+                        FontAttributes="Bold"
+                        
+                        Text="Check for updates:" />
+                    <Switch
+                        x:Name="appAutoUpdate_chbox"
+                        Grid.Row="1" Grid.Column="1"
+                        
+                        IsToggled="true"
+                        HorizontalOptions="End"/>
+                </Grid>
+            </Grid>
+
+            <!-- Copyright -->
+            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="Center"
+                  Margin="0, 50, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!-- Background Worker Policy -->
+                <Button
+                    x:Name="backgroundworkerPolicy_btn"
+                    Grid.Row="0"
+           
+                    Text="BACKGROUND WORKER POLICY"
+                    TextColor="WhiteSmoke"
+                    Clicked="BackgroundWorkerPolicyButtonOnClick"
+                        
+                    BackgroundColor="OrangeRed"
+                    MinimumHeightRequest="35"
+                    HeightRequest="35"
+                        
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <BoxView
+                    Grid.Row="1"
+                    
+                    Margin="50, 0, 50, 0"
+                    HeightRequest="1"
+                    Color="Black"/>
+                <Label
+                    x:Name="copyrightAppVersion_lbl"
+                    Grid.Row="2"
+            
+                    Margin="0, 0, 0, 5"
+                    Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='(c){0:yyyy} Mutu Adi-Marian | v'}"
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

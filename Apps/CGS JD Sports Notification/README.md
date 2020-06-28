@@ -29,3 +29,8 @@ Now the problem was the core functionality of this app, running in the backgroun
 So I lost a lot of days to understand why my app sometimes was working and sometimes not, I tried a lot of different methods (which this lead me to rewrite the code several times) until I understood exactly how this does work, how AOSP/OEMs tries to optimizes the battery and then I was able to create something which I'm satisfied of.
 
 So, yeah, I had a lot of fun while building this app 😎
+
+
+I think this meme it's perfect to resume my work on this app 😂
+
+<p align="center"><img src="https://i.imgur.com/o6aaWjn.jpg" width="50%" height="50%"/></p>

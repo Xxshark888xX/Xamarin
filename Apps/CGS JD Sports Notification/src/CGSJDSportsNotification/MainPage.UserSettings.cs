@@ -89,6 +89,8 @@ namespace CGSJDSportsNotification {
                     _mainPage.searchTimeframe_slide.Value          = SharedSettings.Entries.Get.Int32("searchTimeframe");
                     _mainPage.countries_picker.SelectedItem        = SharedSettings.Entries.Get.String("searchCountrySelected");
                     _mainPage.searchRefreshRate_slide.Value        = SharedSettings.Entries.Get.Int32("searchRefresh");
+                    _mainPage.doNotDisturbStart_timep.Time         = TimeSpan.Parse(SharedSettings.Entries.Get.String("doNotDisturbStart"));
+                    _mainPage.doNotDisturbEnd_timep.Time           = TimeSpan.Parse(SharedSettings.Entries.Get.String("doNotDisturbEnd"));
                     _mainPage.searchUnknownCountry_chbox.IsToggled = SharedSettings.Entries.Get.Bool("searchUnknownCountry");
                     _mainPage.appAutoUpdate_chbox.IsToggled        = SharedSettings.Entries.Get.Bool("appAutoUpdate");
 
@@ -118,8 +120,10 @@ namespace CGSJDSportsNotification {
                 SharedSettings.SecureEntries.AddOrEdit("rtUser", _mainPage.rtUser_entry.Text);
                 SharedSettings.SecureEntries.AddOrEdit("rtPass", _mainPage.rtPass_entry.Text);
                 SharedSettings.Entries.AddOrEdit.Int32("searchTimeframe", (int)_mainPage.searchTimeframe_slide.Value);
-                SharedSettings.Entries.AddOrEdit.String("searchCountrySelected", _mainPage.countries_picker.SelectedItem.ToString());
                 SharedSettings.Entries.AddOrEdit.Int32("searchRefresh", (int)_mainPage.searchRefreshRate_slide.Value);
+                SharedSettings.Entries.AddOrEdit.String("doNotDisturbStart", _mainPage.doNotDisturbStart_timep.Time.ToString());
+                SharedSettings.Entries.AddOrEdit.String("doNotDisturbEnd", _mainPage.doNotDisturbEnd_timep.Time.ToString());
+                SharedSettings.Entries.AddOrEdit.String("searchCountrySelected", _mainPage.countries_picker.SelectedItem.ToString());
                 SharedSettings.Entries.AddOrEdit.Bool("searchUnknownCountry", _mainPage.searchUnknownCountry_chbox.IsToggled);
                 SharedSettings.Entries.AddOrEdit.Bool("appAutoUpdate", _mainPage.appAutoUpdate_chbox.IsToggled);
 
@@ -146,6 +150,8 @@ namespace CGSJDSportsNotification {
                 _mainPage.searchTimeframe_slide.IsEnabled      = !_mainPage.searchTimeframe_slide.IsEnabled;
                 _mainPage.countryPickerSelect_btn.IsEnabled    = !_mainPage.countryPickerSelect_btn.IsEnabled;
                 _mainPage.searchRefreshRate_slide.IsEnabled    = !_mainPage.searchRefreshRate_slide.IsEnabled;
+                _mainPage.doNotDisturbStart_btn.IsEnabled      = !_mainPage.doNotDisturbStart_btn.IsEnabled;
+                _mainPage.doNotDisturbEnd_btn.IsEnabled        = !_mainPage.doNotDisturbEnd_btn.IsEnabled;
                 _mainPage.searchUnknownCountry_chbox.IsEnabled = !_mainPage.searchUnknownCountry_chbox.IsEnabled;
                 _mainPage.backgroundworkerPolicy_btn.IsEnabled = !_mainPage.backgroundworkerPolicy_btn.IsEnabled;
             }

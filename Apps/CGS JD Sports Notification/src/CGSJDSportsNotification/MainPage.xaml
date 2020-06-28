@@ -42,6 +42,9 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <!-- RT User name -->
                 <Label
@@ -108,7 +111,6 @@
                     </Grid.ColumnDefinitions>
                     
                     <Label
-                        Margin="2, 0, 0, 0"
                         Grid.Row="0" Grid.Column="0" 
                         
                         Text="Search open tickets which are not older than"
@@ -151,7 +153,6 @@
 
                     <Label
                         x:Name="searchTimeFrame_lbl"
-                        Margin="2, 0, 0, 0"
                         Grid.Row="5" Grid.Column="0" 
                         
                         Text="6 hour(s)"
@@ -180,7 +181,7 @@
                 </Grid>
 
                 <!-- Refresh Rate -->
-                <Grid Grid.Row="8">
+                <Grid Grid.Row="8" Margin="0, 10, 0, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -197,7 +198,6 @@
                     </Grid.ColumnDefinitions>
                     
                     <Label
-                        Margin="2, 0, 0, 0"
                         Grid.Row="0" Grid.Column="0" 
                         
                         Text="Search Refresh Rate"
@@ -240,7 +240,6 @@
 
                     <Label
                         x:Name="searchRefreshRate_lbl"
-                        Margin="2, 0, 0, 0"
                         Grid.Row="5" Grid.Column="0" 
                         
                         Text="30 minutes"
@@ -268,8 +267,89 @@
                         Color="Gray"/>
                 </Grid>
 
+                <!--- Do not disturb time picker -->
+                <Label Grid.Row="9" Margin="0, 10, 0, 0"
+                        
+                    Text="Do not disturb between these hours"
+                    FontAttributes="Bold"
+                        
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="End"/>
+
+                <Grid Grid.Row="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- START -->
+                    <Button
+                        x:Name="doNotDisturbStart_btn"
+                        Grid.Row="0" Grid.Column="0"
+                        
+                        Clicked="DoNotDisturbStartButtonOnClick"
+                        
+                        Text="22:00"
+                        
+                        TextColor="Black"
+                        BackgroundColor="SteelBlue"
+                        MinimumHeightRequest="35"
+                        HeightRequest="35"
+                        
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"/>
+
+                    <TimePicker 
+                        x:Name="doNotDisturbStart_timep"
+                        Grid.Row="0" Grid.Column="0"
+                        
+                        PropertyChanged="DoNotDisturbStartTimePickerChanged"
+                        
+                        IsVisible="false"
+                        
+                        Format="HH:mm"
+                        Time="22:00:00"/>
+                    <!-- END -->
+                    <Button
+                        x:Name="doNotDisturbEnd_btn"
+                        Grid.Row="0" Grid.Column="1"
+                        
+                        Clicked="DoNotDisturbEndButtonOnClick"
+                        
+                        Text="19:00"
+                        
+                        TextColor="Black"
+                        BackgroundColor="SteelBlue"
+                        MinimumHeightRequest="35"
+                        HeightRequest="35"
+                        
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center"/>
+
+                    <TimePicker 
+                        x:Name="doNotDisturbEnd_timep"
+                        Grid.Row="0" Grid.Column="0"
+                        
+                        PropertyChanged="DoNotDisturbEndTimePickerChanged"
+                        
+                        IsVisible="false"
+                        
+                        Format="HH:mm"
+                        Time="19:00:00"/>
+                </Grid>
+
+                <BoxView
+                    Grid.Row="11"
+                    
+                    Margin="110, 0, 110, 0"
+                    HeightRequest="1"
+                    Color="Gray"/>
+
                 <!-- Country -->
-                <Grid Grid.Row="9">
+                <Grid Grid.Row="12">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -281,7 +361,6 @@
                     </Grid.ColumnDefinitions>
 
                     <Label
-                        Margin="2, 0, 0, 0"
                         Grid.Row="1" Grid.Column="0" 
                         
                         Text="Country"
@@ -308,7 +387,7 @@
                     <BoxView
                         Grid.Row="3" Grid.Column="0" 
                     
-                        Margin="50, 0, 50, 0"
+                        Margin="110, 0, 110, 0"
                         HeightRequest="1"
                         Color="Gray"/>
 
@@ -331,7 +410,7 @@
                 </Grid>
 
                 <!-- Show Unknown Tickets -->
-                <Grid Grid.Row="10">
+                <Grid Grid.Row="13" Margin="0, 10, 0, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
@@ -356,7 +435,7 @@
                 </Grid>
 
                 <BoxView
-                    Grid.Row="11"
+                    Grid.Row="14"
                     
                     Margin="50, 0, 50, 0"
                     HeightRequest="1"
@@ -365,7 +444,7 @@
                 <!-- Start/Stop monitoring button -->
                 <Button
                     x:Name="monitoring_btn"
-                    Grid.Row="12"
+                    Grid.Row="15"
                     
                     Clicked="SettingsMonitoringOnClick"
                     PropertyChanged="SettingsMonitoringChanged"
@@ -380,12 +459,12 @@
                 
                 <!-- App Settings -->
                 <BoxView
-                    Grid.Row="13"
+                    Grid.Row="16"
                     
                     HeightRequest="1"
                     Color="Black"/>
                 <Label
-                    Grid.Row="14"
+                    Grid.Row="17"
                     
                     Text="APP SETTINGS"
                     HorizontalOptions="CenterAndExpand"
@@ -393,11 +472,11 @@
                     FontSize="Medium"
                     FontAttributes="Bold"/>
                 <BoxView
-                    Grid.Row="15"
+                    Grid.Row="18"
                     
                     HeightRequest="1"
                     Color="Black"/>
-                <Grid Grid.Row="16">
+                <Grid Grid.Row="19">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>

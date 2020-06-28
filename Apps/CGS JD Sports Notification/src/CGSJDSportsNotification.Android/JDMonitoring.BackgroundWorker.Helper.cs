@@ -45,6 +45,21 @@ namespace CGSJDSportsNotification.Droid {
                     FreeMemory();
                 }
 
+                public async Task<bool> IsDoNotDisturbeTime() {
+                    TimeSpan doNotDisturbTimeStart = TimeSpan.Parse(SharedSettings.Entries.Get.String("doNotDisturbStart"));
+                    TimeSpan doNotDisturbTimeEnd   = TimeSpan.Parse(SharedSettings.Entries.Get.String("doNotDisturbEnd"));
+                    TimeSpan timeNow               = DateTime.Now.TimeOfDay;
+
+                    if (timeNow >= doNotDisturbTimeStart && timeNow < doNotDisturbTimeEnd) {
+                        // If the current time is between the do not disturb timespan, the alarm will be stopped and scheduled to start at the end of the do not disturb end value
+                        BackgroundWorkerReset(((doNotDisturbTimeEnd - timeNow).Minutes + 1) * 60);
+
+                        return true;
+                    }
+
+                    return false;
+                }
+
                 public async Task<bool> BrowserInit() {
                     Device.BeginInvokeOnMainThread(() => {
                         browser = new Browser(wc);
@@ -64,6 +79,7 @@ namespace CGSJDSportsNotification.Droid {
                             browser.WB.OnPause();
                             browser.WB.RemoveAllViews();
                             browser.WB.Destroy();
+                            browser.WB.Dispose();
                             browser.WB = null;
 
                             wc.Dispose();

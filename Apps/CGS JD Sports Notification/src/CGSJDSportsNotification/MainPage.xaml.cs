@@ -121,6 +121,22 @@ namespace CGSJDSportsNotification {
                 searchRefreshRate_lbl.Text = $"{timeFrame} minutes";
         }
 
+        void DoNotDisturbStartButtonOnClick(object sender, EventArgs e) {
+            doNotDisturbStart_timep.Focus();
+        }
+
+        void DoNotDisturbStartTimePickerChanged(object sender, EventArgs e) {
+            doNotDisturbStart_btn.Text = doNotDisturbStart_timep.Time.ToString(@"hh\:mm");
+        }
+
+        void DoNotDisturbEndButtonOnClick(object sender, EventArgs e) {
+            doNotDisturbEnd_timep.Focus();
+        }
+
+        void DoNotDisturbEndTimePickerChanged(object sender, EventArgs e) {
+            doNotDisturbEnd_btn.Text = doNotDisturbEnd_timep.Time.ToString(@"hh\:mm");
+        }
+
         void CountryPickerSelectButtonOnClick(object sender, EventArgs e) {
             countries_picker.Focus();
         }

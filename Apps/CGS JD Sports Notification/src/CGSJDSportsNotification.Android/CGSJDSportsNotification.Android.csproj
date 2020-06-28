@@ -93,7 +93,7 @@
     <Compile Include="ForegroundService.Notification.cs" />
     <Compile Include="ForegroundService.Notification.Action.cs" />
     <Compile Include="JDMonitoring.cs" />
-    <Compile Include="JDMonitoring.Helper.cs" />
+    <Compile Include="JDMonitoring.BackgroundWorker.Helper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,9 +147,6 @@
     <AndroidResource Include="Resources\drawable\newTktSpain.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\newTktStopMonitoring.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\newTktUnknownCountry.png" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\newTktStopMonitoring.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

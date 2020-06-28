@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace CGSJDSportsNotification {
@@ -27,8 +28,7 @@ namespace CGSJDSportsNotification {
             base.OnBackButtonPressed();
 
             if (jdQueueMainUrl || firstLoad == true) {
-                if (Navigation.NavigationStack.Count == 1)
-                    // Exits from the app
+                if (Navigation.NavigationStack.Count == 1) 
                     return false;
                 else
                     Navigation.RemovePage(this);

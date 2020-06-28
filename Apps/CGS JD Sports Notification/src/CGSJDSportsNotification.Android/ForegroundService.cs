@@ -13,7 +13,6 @@ namespace CGSJDSportsNotification.Droid {
 
             Android.Widget.Toast.MakeText(Application.Context, "JD Queue - Monitoring started!", Android.Widget.ToastLength.Long).Show();
 
-            JDMonitoring.BackgroundWorker.Helper.Wifi.Acquire();
             // First alarm scheduler
             JDMonitoring.BackgroundWorker.Helper.BackgroundWorkerFire((1000 * 60) * SharedSettings.Entries.Get.Int32("searchRefresh"));
 
@@ -26,7 +25,7 @@ namespace CGSJDSportsNotification.Droid {
 
             JDMonitoring.BackgroundWorker.Helper.BackgroundWorkerStop();
 
-            JDMonitoring.BackgroundWorker.Helper.Wifi.Release();
+            try { JDMonitoring.BackgroundWorker.Helper.Wifi.Release(); } catch { }
 
             SharedSettings.Entries.AddOrEdit.Bool("monitoringIsRunning", false);
 

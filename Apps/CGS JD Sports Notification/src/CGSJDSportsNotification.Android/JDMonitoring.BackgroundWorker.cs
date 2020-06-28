@@ -16,6 +16,11 @@ namespace CGSJDSportsNotification.Droid {
             }
 
             async void FetchTickets() {
+                if (await H.IsDoNotDisturbeTime())
+                    return;
+
+                Helper.Wifi.Acquire();
+
                 // Reinitialize the Browser class
                 if (H.browser == null) {
                     H.wc = new Browser.CustomWebViewClient();
@@ -139,6 +144,7 @@ namespace CGSJDSportsNotification.Droid {
                 H.FreeMemory();
                 // Reschedules the alarm
                 H.BackgroundWorkerReset();
+                Helper.Wifi.Release();
             }
 
             public async void BrowserOnPageStarted(object sender, string url) {

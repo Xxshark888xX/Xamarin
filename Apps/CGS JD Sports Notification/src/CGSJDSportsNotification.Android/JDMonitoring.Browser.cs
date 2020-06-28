@@ -41,7 +41,7 @@ namespace CGSJDSportsNotification.Droid {
                 WB.Settings.UserAgentString   = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246";
 
 
-                WB.SetWebChromeClient(new WebChromeClient());
+                //WB.SetWebChromeClient(new WebChromeClient());
 
                 if (url != "")
                     WB.LoadUrl(url);
@@ -61,17 +61,17 @@ namespace CGSJDSportsNotification.Droid {
                             WB.ClearSslPreferences();
                             //WB.Settings.SetAppCacheEnabled(false);
                             //WB.Settings.CacheMode = CacheModes.NoCache;
-                        } catch (Exception e) { Debug.WriteLine(e); }
+                        } catch { }
                     });
-                } catch(Exception e) { Debug.WriteLine(e); }
+                } catch { }
             }
 
             public void LoadUrl(string url) {
                 try {
                     Device.BeginInvokeOnMainThread(() => {
-                        try { WB.LoadUrl(url); } catch (Exception e) { Debug.WriteLine(e); }
+                        try { WB.LoadUrl(url); } catch { }
                     });
-                } catch (Exception e) { Debug.WriteLine(e); }
+                } catch {  }
             }
 
             public async Task<string> EvalJS(string js, bool returnNullObjectWhenNull = true) {
@@ -85,19 +85,19 @@ namespace CGSJDSportsNotification.Droid {
                                 JSResult = r;
                                 reset.Set();
                             }));
-                        } catch (Exception e) { Debug.WriteLine(e); }
+                        } catch { }
                     });
 
                     await Task.Run(() => { reset.WaitOne(); });
                     return JSResult == "null" ? returnNullObjectWhenNull ? null : "null" : JSResult;
-                } catch (Exception e) { Debug.WriteLine(e); return null; }
+                } catch {  return null; }
             }
 
             class JSInterface : Java.Lang.Object, IValueCallback {
                 private Action<string> _callback;
 
                 public JSInterface(Action<string> callback) {
-                    try { _callback = callback; } catch (Exception e) { Debug.WriteLine(e); }
+                    try { _callback = callback; } catch  { }
                 }
 
                 public void OnReceiveValue(Java.Lang.Object value) {
@@ -108,7 +108,7 @@ namespace CGSJDSportsNotification.Droid {
                             v = v.Remove(0, 1).Remove(v.Length - 2, 1);
 
                         _callback?.Invoke(v);
-                    } catch (Exception e) { Debug.WriteLine(e); }
+                    } catch { }
                 }
             }
 
@@ -147,7 +147,7 @@ namespace CGSJDSportsNotification.Droid {
                     timer = null;
 
                     return true;
-                } catch (Exception e) { Debug.WriteLine(e); return false; }
+                } catch { return false; }
             }
         }
     }

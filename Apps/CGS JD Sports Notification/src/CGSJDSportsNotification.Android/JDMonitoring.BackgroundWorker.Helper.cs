@@ -48,16 +48,60 @@ namespace CGSJDSportsNotification.Droid {
                 public async Task<bool> IsDoNotDisturbeTime() {
                     TimeSpan doNotDisturbTimeStart = TimeSpan.Parse(SharedSettings.Entries.Get.String("doNotDisturbStart"));
                     TimeSpan doNotDisturbTimeEnd   = TimeSpan.Parse(SharedSettings.Entries.Get.String("doNotDisturbEnd"));
-                    TimeSpan timeNow               = DateTime.Now.TimeOfDay;
 
-                    if (timeNow >= doNotDisturbTimeStart && timeNow < doNotDisturbTimeEnd) {
-                        // If the current time is between the do not disturb timespan, the alarm will be stopped and scheduled to start at the end of the do not disturb end value
-                        BackgroundWorkerReset(((doNotDisturbTimeEnd - timeNow).Minutes + 1) * 60);
+                    DateTime timeNow               = DateTime.Now;
+                    DateTime timeRemainingAlarm;
 
-                        return true;
+                    bool doNotDisturb;
+                    bool pastMidnight = false;
+
+                    int alarmReschSec = 0;
+
+                    // If end date has passed midnight
+                    if (doNotDisturbTimeStart > doNotDisturbTimeEnd) {
+                        // Calculates if the current time is between the do not disturb values
+                        doNotDisturb = (doNotDisturbTimeStart <= timeNow.TimeOfDay) || (timeNow.TimeOfDay < doNotDisturbTimeEnd);
+
+                        pastMidnight = true;
+                    } else
+                        doNotDisturb = (doNotDisturbTimeStart <= timeNow.TimeOfDay) && (timeNow.TimeOfDay < doNotDisturbTimeEnd);
+
+
+                    if (doNotDisturb) {
+                        if (pastMidnight) {
+                            // Calculates the remaining seconds until the do not disturb end value
+                            timeRemainingAlarm = new DateTime(
+                                DateTime.Now.Year,
+                                DateTime.Now.Month,
+                                DateTime.Now.Day,
+                                doNotDisturbTimeEnd.Hours,
+                                doNotDisturbTimeEnd.Minutes,
+                                doNotDisturbTimeEnd.Seconds
+                            );
+
+                            // Even if end value has passed midnight, we must check the current day, because if the current time is today and the end value is for tomorrow, we must add 1 day to the remaining time
+                            if (doNotDisturbTimeEnd.Hours >= 0 && timeNow.TimeOfDay >= doNotDisturbTimeStart)
+                                timeRemainingAlarm = timeRemainingAlarm.AddDays(1);
+
+                            alarmReschSec = (int)(timeRemainingAlarm.Subtract(timeNow)).TotalSeconds;
+                        } else {
+                            timeRemainingAlarm = new DateTime(
+                                DateTime.Now.Year,
+                                DateTime.Now.Month,
+                                DateTime.Now.Day,
+                                doNotDisturbTimeEnd.Hours,
+                                doNotDisturbTimeEnd.Minutes,
+                                doNotDisturbTimeEnd.Seconds
+                            ); // Current day, no need to add the next day
+
+                            alarmReschSec = (int)(timeRemainingAlarm.Subtract(timeNow)).TotalSeconds;
+                        }
+
+                        // Reschedules the alarm
+                        BackgroundWorkerReset(alarmReschSec);
                     }
 
-                    return false;
+                    return doNotDisturb;
                 }
 
                 public async Task<bool> BrowserInit() {

@@ -54,7 +54,6 @@ namespace CGSJDSportsNotification {
                             Exception batteryWhitelistEx;
 
                             if ((batteryWhitelistEx = oemBatteryApp.RequestPermissions()) != null) {
-                                SharedSettings.Entries.AddOrEdit.Bool("oemBgWorkerPolicyAccepted", true);
                                 policyAccepted = false;
 
                                 await _mainPage.DisplayAlert(

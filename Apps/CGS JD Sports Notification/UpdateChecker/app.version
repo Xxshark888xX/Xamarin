@@ -1,10 +1,16 @@
 [time_stamp]
-3:50 AM Saturday, June 27, 2020
+9:21 PM Monday, June 29, 2020
 [version]
 1.0
 [build]
-2038
+2045
 [erase_settings]
 false
 [change_log]
-<# *Improved GUI#>
+<#
+BUG FIX:
+ Bug which allowed to retrieve also the tickets outside the time frame selected by the user.
+This issue lead to the possibility to fetch tickets which are several days old and thus creating a false 'Last updated' value
+BUG FIX:
+ Bug which occured while using Wifi.Acquire or Wifi.Release, because of improper checks this would make the app to crash
+ #>

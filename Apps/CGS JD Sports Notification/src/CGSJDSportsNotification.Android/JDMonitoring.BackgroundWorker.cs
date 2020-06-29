@@ -11,15 +11,13 @@ namespace CGSJDSportsNotification.Droid {
         public partial class BackgroundWorker : BroadcastReceiver {
             Helper H { get; } = new Helper(60 * SharedSettings.Entries.Get.Int32("searchRefresh"));
 
-            public override void OnReceive(Context context, Intent intent) {
-                FetchTickets();
-            }
+            public override void OnReceive(Context context, Intent intent) { FetchTickets(); }
 
             async void FetchTickets() {
                 if (await H.IsDoNotDisturbeTime())
                     return;
 
-                Helper.Wifi.Acquire();
+                Helper.WifiAcquire();
 
                 // Reinitialize the Browser class
                 if (H.browser == null) {
@@ -144,7 +142,7 @@ namespace CGSJDSportsNotification.Droid {
                 H.FreeMemory();
                 // Reschedules the alarm
                 H.BackgroundWorkerReset();
-                Helper.Wifi.Release();
+                Helper.WifiRelease();
             }
 
             public async void BrowserOnPageStarted(object sender, string url) {
@@ -158,10 +156,13 @@ namespace CGSJDSportsNotification.Droid {
                 
                 // When the login page has loaded
                 if (url.StartsWith(H.UrlLoginPage)) {
+                    Log.Info("jd_foo", $"LOGIN_PAGE = TRUE");
+
                     // Login again in order to access the tkt page
-                    if (H.InDepthProcess)
-                        await H.Login();
-                    else
+                    if (H.InDepthProcess) {
+                        if (await H.IsOnLoginPage() == true)
+                            await H.Login();
+                    } else
                         // First login
                         H.ProcessPhase = 1;
 

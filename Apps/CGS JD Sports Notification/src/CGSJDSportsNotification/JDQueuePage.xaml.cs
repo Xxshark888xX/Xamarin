@@ -26,10 +26,11 @@ namespace CGSJDSportsNotification {
 
         protected override bool OnBackButtonPressed() {
             base.OnBackButtonPressed();
+            bool exit = false;
 
             if (jdQueueMainUrl || firstLoad == true) {
-                if (Navigation.NavigationStack.Count == 1) 
-                    return false;
+                if (Navigation.NavigationStack.Count == 1)
+                    exit = true;
                 else
                     Navigation.RemovePage(this);
             } else {
@@ -39,8 +40,11 @@ namespace CGSJDSportsNotification {
                     else
                         notificationJdqueue_webview.Source = jdQueueUrl;
                 else
-                    return false;
+                    exit = true;
             }
+
+            if (exit)
+                return false;
 
             return true;
         }

@@ -25,7 +25,7 @@ namespace CGSJDSportsNotification.Droid {
 
             JDMonitoring.BackgroundWorker.Helper.BackgroundWorkerStop();
 
-            try { JDMonitoring.BackgroundWorker.Helper.Wifi.Release(); } catch { }
+            JDMonitoring.BackgroundWorker.Helper.WifiRelease();
 
             SharedSettings.Entries.AddOrEdit.Bool("monitoringIsRunning", false);
 

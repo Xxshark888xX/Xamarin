@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Net.Wifi;
 using Android.OS;
+using Android.Text.Format;
 using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace CGSJDSportsNotification.Droid {
                 const string URL_QUEUE_PAGE = "https://support.jdplc.com/rt4/Search/Results.html?Format=%27%3Cb%3E%3Ca%20href%3D%22__WebPath__%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__id__%3C%2Fa%3E%3C%2Fb%3E%2FTITLE%3A%23%27%2C%0A%27%3Cb%3E%3Ca%20href%3D%22__WebPath__%2FTicket%2FDisplay.html%3Fid%3D__id__%22%3E__Subject__%3C%2Fa%3E%3C%2Fb%3E%2FTITLE%3ASubject%27%2C%0AStatus%2C%0AQueueName%2C%0AOwner%2C%0APriority%2C%0A%27__NEWLINE__%27%2C%0A%27__NBSP__%27%2C%0A%27%3Csmall%3E__Requestors__%3C%2Fsmall%3E%27%2C%0A%27%3Csmall%3E__CreatedRelative__%3C%2Fsmall%3E%27%2C%0A%27%3Csmall%3E__ToldRelative__%3C%2Fsmall%3E%27%2C%0A%27%3Csmall%3E__LastUpdatedRelative__%3C%2Fsmall%3E%27%2C%0A%27%3Csmall%3E__TimeLeft__%3C%2Fsmall%3E%27&Order=DESC%7CASC%7CASC%7CASC&OrderBy=LastUpdated%7C%7C%7C&Query=Queue%20%3D%20%27Service%20Desk%20-%20CGS%27%20AND%20(%20%20Status%20%3D%20%27new%27%20OR%20Status%20%3D%20%27open%27%20OR%20Status%20%3D%20%27stalled%27%20OR%20Status%20%3D%20%27deferred%27%20OR%20Status%20%3D%20%27open%20-%20awaiting%20requestor%27%20OR%20Status%20%3D%20%27open%20-%20awaiting%20third%20party%27%20)&RowsPerPage=0&SavedChartSearchId=new&SavedSearchId=new";
 
                 public static Context AndroidContext { get { return Android.App.Application.Context; } }
-                public static WifiManager.WifiLock Wifi { get; } = ((WifiManager)(new ContextWrapper(AndroidContext)).GetSystemService(Context.WifiService)).CreateWifiLock(Android.Net.WifiMode.Full, "WifiLock");
+                static WifiManager.WifiLock Wifi { get; } = ((WifiManager)(new ContextWrapper(AndroidContext)).GetSystemService(Context.WifiService)).CreateWifiLock(Android.Net.WifiMode.Full, "WifiLock");
                 public string UrlLoginPage { get { return URL_LOGIN_PAGE; } }
                 public string UrlQueuePage { get { return URL_QUEUE_PAGE; } }
 
@@ -43,6 +44,16 @@ namespace CGSJDSportsNotification.Droid {
                 public void Dispose() {
                     BackgroundWorkerStop();
                     FreeMemory();
+                }
+
+                public static void WifiAcquire() {
+                    if (Wifi.IsHeld == false)
+                        Wifi.Acquire();
+                }
+
+                public static void WifiRelease() {
+                    if (Wifi.IsHeld)
+                        Wifi.Release();
                 }
 
                 public async Task<bool> IsDoNotDisturbeTime() {
@@ -239,12 +250,18 @@ namespace CGSJDSportsNotification.Droid {
                         tkt.LastUpdated = await browser.EvalJS($"document.getElementsByClassName('ticket-list collection-as-table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[{index + 1}].getElementsByTagName('td')[4].textContent");
 
                         // Gets only the tkts which are not older than the value selected by the user (in minutes)
-                        if (tkt.LastUpdated.Contains("hours") || tkt.LastUpdated.Contains("minutes")) {
+                        if (tkt.LastUpdated.Contains("hours") || tkt.LastUpdated.Contains("hour")) {
+                            int time = Convert.ToInt32(System.Text.RegularExpressions.Regex.Replace(tkt.LastUpdated, @"[^\d]+", ""));
+
+                            if (time * 60 > SharedSettings.Entries.Get.Int32("searchTimeframe"))
+                                break;
+                        } else if (tkt.LastUpdated.Contains("minutes") || tkt.LastUpdated.Contains("minute")) {
                             int time = Convert.ToInt32(System.Text.RegularExpressions.Regex.Replace(tkt.LastUpdated, @"[^\d]+", ""));
 
                             if (time > SharedSettings.Entries.Get.Int32("searchTimeframe"))
                                 break;
-                        }
+                        } else if (tkt.LastUpdated.Contains("second") == false && tkt.LastUpdated.Contains("seconds") == false)
+                            break;
 
                         tkt.ID     = await browser.EvalJS($"document.getElementsByClassName('ticket-list collection-as-table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[{index}].getElementsByTagName('td')[0].textContent");
                         tkt.Owner  = await browser.EvalJS($"document.getElementsByClassName('ticket-list collection-as-table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('tr')[{index}].getElementsByTagName('td')[4].textContent");
@@ -338,7 +355,7 @@ namespace CGSJDSportsNotification.Droid {
                     string lUpdated = "";
 
                     if (lastUpdated.Contains("hours"))
-                        lUpdated += $"{time / 60} hour(s) ago";
+                        lUpdated += $"{time} hour(s) ago";
                     else if (lastUpdated.Contains("seconds"))
                         lUpdated += $"{time} second(s) ago";
                     else {
@@ -348,7 +365,7 @@ namespace CGSJDSportsNotification.Droid {
                             int hr = (int)Math.Round((decimal)(time / 60));
                             lUpdated += $"{hr} hour(s) and {time % 60} minute(s) ago";
                         } else
-                            lUpdated += $"{time} minute(s). ago";
+                            lUpdated += $"{time} minute(s) ago";
                     }
 
                     if (IsFgServiceActive().Result)

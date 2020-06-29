@@ -59,10 +59,10 @@ namespace CGSJDSportsNotification.Droid {
                     if (value.Contains("hours") || value.Contains("hour")) {
                         time *= 60;
 
-                        v = v.Insert(0, $"{time} hours ago");
+                        v = v.Insert(0, $"{time} minutes ago");
                     } else if (value.Contains("seconds") || value.Contains("second"))
                         v = v.Insert(0, $"{time} seconds ago");
-                    else
+                    else if (value.Contains("day") == false && value.Contains("days") == false)
                         v = v.Insert(0, $"{time} minutes ago");
 
                     lastUpdated = v;

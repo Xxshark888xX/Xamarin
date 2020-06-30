@@ -8,9 +8,9 @@ I've decided to create this app because when we are on-call working from home I 
 
 And to not forget that this it's also helping my colleagues 💪 
 
-## Screenshot (v1.0 build 2037)
+## Screenshot (v1.0 build 2080)
 
-<p align="center"><img src="https://i.imgur.com/0KFrMkj.jpg" width="50%" height="50%"/></p>
+<p align="center"><img src="https://i.imgur.com/iomBPZE.jpg" width="50%" height="50%"/></p>
 
 
 ### Personal notes

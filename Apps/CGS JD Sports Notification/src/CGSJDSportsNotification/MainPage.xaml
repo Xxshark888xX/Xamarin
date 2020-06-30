@@ -11,7 +11,7 @@
     <ScrollView>
         <StackLayout>
             <!-- Application Title -->
-            <Grid>
+            <Grid BackgroundColor="SteelBlue">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
@@ -42,9 +42,6 @@
                     FontAttributes="Bold"/>
             </Grid>
             <!-- Application Title divider -->
-            <BoxView
-                HeightRequest="2"
-                Color="Black"/>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -546,12 +543,16 @@
                         
                     HorizontalOptions="Center"
                     VerticalOptions="Center"/>
+
                 <BoxView
                     Grid.Row="1"
                     
                     Margin="50, 0, 50, 0"
                     HeightRequest="1"
                     Color="Black"/>
+                
+                <BoxView Color="SteelBlue" Grid.Row="2"/>
+                
                 <Label
                     x:Name="copyrightAppVersion_lbl"
                     Grid.Row="2"

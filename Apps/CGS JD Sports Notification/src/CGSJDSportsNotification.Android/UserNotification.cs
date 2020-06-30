@@ -62,7 +62,7 @@ namespace CGSJDSportsNotification.Droid {
 
             NotificationCompat.Builder notificationGroupBuilder = new NotificationCompat.Builder(Application.Context, "newWarningNotification_channel")
                 .SetStyle(new NotificationCompat.BigTextStyle().SetSummaryText("Warning notifications"))
-                .SetSmallIcon(Resource.Drawable.warningNotification)
+                .SetSmallIcon(Resource.Drawable.appIcon)
                 .SetGroup("warning")
                 .SetGroupSummary(true)
 
@@ -120,7 +120,7 @@ namespace CGSJDSportsNotification.Droid {
 
             NotificationCompat.Builder notificationGroupBuilder = new NotificationCompat.Builder(Application.Context, "newTktNotification_channel")
                 .SetStyle(new NotificationCompat.BigTextStyle().SetSummaryText("Pending tickets"))
-                .SetSmallIcon(Resource.Drawable.newTktNotification)
+                .SetSmallIcon(Resource.Drawable.appIcon)
                 .SetGroup("tkts")
                 .SetGroupSummary(true)
                 .SetAutoCancel(true);

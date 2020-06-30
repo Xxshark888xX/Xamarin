@@ -24,7 +24,7 @@ namespace CGSJDSportsNotification.Droid {
                     .SetPriority((int)NotificationPriority.Min)
                     .SetShowWhen(false)
 
-                    .SetSmallIcon(Resource.Drawable.foregroundServiceNotificationIcon)
+                    .SetSmallIcon(Resource.Drawable.appIcon)
                     .SetLargeIcon(Android.Graphics.BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.foregroundServiceNotificationIcon))
 
                     .SetContentTitle("Monitoring the JD Queue")

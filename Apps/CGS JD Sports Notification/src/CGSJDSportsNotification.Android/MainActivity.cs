@@ -4,6 +4,7 @@ using Android.Runtime;
 using Android.OS;
 using Xamarin.Forms;
 using Android.Content;
+using System;
 
 [assembly: Dependency(typeof(CGSJDSportsNotification.Droid.MainActivity))]
 namespace CGSJDSportsNotification.Droid {

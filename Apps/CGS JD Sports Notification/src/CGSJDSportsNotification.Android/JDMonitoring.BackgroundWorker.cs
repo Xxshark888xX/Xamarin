@@ -156,8 +156,6 @@ namespace CGSJDSportsNotification.Droid {
                 
                 // When the login page has loaded
                 if (url.StartsWith(H.UrlLoginPage)) {
-                    Log.Info("jd_foo", $"LOGIN_PAGE = TRUE");
-
                     // Login again in order to access the tkt page
                     if (H.InDepthProcess) {
                         if (await H.IsOnLoginPage() == true)

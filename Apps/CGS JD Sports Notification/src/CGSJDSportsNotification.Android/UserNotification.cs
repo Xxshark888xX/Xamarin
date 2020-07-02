@@ -48,7 +48,7 @@ namespace CGSJDSportsNotification.Droid {
                 .SetPriority((int)NotificationPriority.Max)
                 .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate | (int)NotificationDefaults.Lights)
                 .SetGroup("warning")
-                .SetSmallIcon(Resource.Drawable.warningNotification)
+                .SetSmallIcon(Resource.Drawable.appIcon)
                 .SetLargeIcon(Android.Graphics.BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.warningNotification))
 
                 .SetSubText("Important Notification")
@@ -61,6 +61,8 @@ namespace CGSJDSportsNotification.Droid {
                 .SetAutoCancel(true);
 
             NotificationCompat.Builder notificationGroupBuilder = new NotificationCompat.Builder(Application.Context, "newWarningNotification_channel")
+                .SetVisibility((int)NotificationVisibility.Public)
+                .SetPriority((int)NotificationPriority.Max)
                 .SetStyle(new NotificationCompat.BigTextStyle().SetSummaryText("Warning notifications"))
                 .SetSmallIcon(Resource.Drawable.appIcon)
                 .SetGroup("warning")
@@ -119,6 +121,8 @@ namespace CGSJDSportsNotification.Droid {
                 .SetContentIntent(contentIntent);
 
             NotificationCompat.Builder notificationGroupBuilder = new NotificationCompat.Builder(Application.Context, "newTktNotification_channel")
+                .SetVisibility((int)NotificationVisibility.Public)
+                .SetPriority((int)NotificationPriority.Max)
                 .SetStyle(new NotificationCompat.BigTextStyle().SetSummaryText("Pending tickets"))
                 .SetSmallIcon(Resource.Drawable.appIcon)
                 .SetGroup("tkts")

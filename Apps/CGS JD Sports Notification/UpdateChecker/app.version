@@ -1,15 +1,15 @@
 [time_stamp]
-10:33 PM Tuesday, June 30, 2020
+8:56 PM Thursday, July 2, 2020
 [version]
 1.0
 [build]
-2080
+2081
 [erase_settings]
 false
 [change_log]
 <#
-Improved:
+Fixed:
 
- * Memory usage
- * GUI Layout
+ * Group notification are not anymore hidden on screenlock while "Hide content notification on lockscreen" feature is enabled
+ * Small warning notification icon
 #>

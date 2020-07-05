@@ -1,15 +1,19 @@
 [time_stamp]
-8:56 PM Thursday, July 2, 2020
+9:29 PM Sunday, July 5, 2020
 [version]
 1.0
 [build]
-2081
+2097
 [erase_settings]
 false
 [change_log]
 <#
+Improved:
+
+ * Cleaned the GUI
+ 
+ 
 Fixed:
 
- * Group notification are not anymore hidden on screenlock while "Hide content notification on lockscreen" feature is enabled
- * Small warning notification icon
+ * App crashes when pressing the 'STOP' notification button after a phone reboot
 #>

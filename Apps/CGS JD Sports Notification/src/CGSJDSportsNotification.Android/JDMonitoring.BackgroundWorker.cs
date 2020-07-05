@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Android.Content;
-using Android.Util;
 
 namespace CGSJDSportsNotification.Droid {
     public partial class JDMonitoring {

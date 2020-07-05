@@ -29,9 +29,12 @@ namespace CGSJDSportsNotification {
         public class UI {
             // Used inside the ForegroundService.Notification.Action
             public static void MonitoringButtonStop() {
-                _mainPage.monitoring_btn.Text = "START";
+                // Placed inside a try-catch because if the device was restarted, the service was started without the GUI being initialized, thus an exception will be raised without using the try-catch block
+                try {
+                    _mainPage.monitoring_btn.Text = "START";
 
-                _mainPage.userSettings.ControlsEnableOrDisable();
+                    _mainPage.userSettings.ControlsEnableOrDisable();
+                } catch { }
             }
 
             public static async Task<bool> DisplayAlert(string title, string message, string onPositiveClick, string onNegativeClick) {

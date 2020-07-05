@@ -35,15 +35,5 @@ namespace CGSJDSportsNotification.Droid {
             
             return false;
         }
-
-        /*public void NotificationNewTicket(string title, string message, string link, string icoCountry, string bigTitle, int id = -1) {
-            UserNotification.TktShow(title, message, link, icoCountry, bigTitle, id);
-        }
-        public void NotificationWarning(string title, string message, string bigTitle, int id = -1) {
-            UserNotification.WarningShow(title, message, bigTitle, id);
-        }
-        public void NotificationRemove(int id) {
-            UserNotification.Remove(id);
-        }*/
     }
 }

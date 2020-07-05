@@ -9,13 +9,16 @@ namespace CGSJDSportsNotification.Droid {
         public override void OnReceive(Context context, Intent intent) {
             // ### Simulates the "STOP" button on the MainPage ### \\
 
+            // Firstly initializes the Forms, otherwise when calling the DependencyService class the app will crash
+            if (Forms.IsInitialized == false)
+                Forms.Init(Android.App.Application.Context, new Android.OS.Bundle());
+
             DependencyService.Get<IForegroundService>().Stop();
 
             SharedSettings.Entries.AddOrEdit.Bool("monitoringRunningByUser", false);
 
             // Used in order to change the button text and to enable the controls
-            // Placed inside a try-catch because if the device was restarted, the service started without the GUI being initialized, thus an exception will be raised without the try-catch block
-            try { MainPage.UI.MonitoringButtonStop(); } catch { }
+            MainPage.UI.MonitoringButtonStop();
         }
     }
 }

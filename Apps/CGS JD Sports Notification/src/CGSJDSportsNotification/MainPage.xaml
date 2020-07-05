@@ -119,11 +119,6 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -137,7 +132,7 @@
                         
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="End"/>
-                    
+
                     <Slider
                         x:Name="searchTimeframe_slide"
                         Grid.Row="1" Grid.Column="0"
@@ -151,28 +146,9 @@
                         MaximumTrackColor="Black"
                         HorizontalOptions="FillAndExpand"/>
 
-                    <BoxView
-                        Grid.Row="2" Grid.Column="0" 
-                    
-                        Margin="110, 0, 110, 0"
-                        HeightRequest="1"
-                        Color="Gray"/>
-                    <BoxView
-                        Grid.Row="3" Grid.Column="0" 
-                    
-                        Margin="80, 0, 80, 0"
-                        HeightRequest="1"
-                        Color="LightGray"/>
-                    <BoxView
-                        Grid.Row="4" Grid.Column="0" 
-                    
-                        Margin="50, 0, 50, 0"
-                        HeightRequest="1"
-                        Color="Gray"/>
-
                     <Label
                         x:Name="searchTimeFrame_lbl"
-                        Grid.Row="5" Grid.Column="0" 
+                        Grid.Row="2" Grid.Column="0" 
                         
                         Text="6 hour(s)"
                         FontAttributes="Bold"
@@ -180,33 +156,17 @@
                         VerticalOptions="Start"/>
 
                     <BoxView
-                        Grid.Row="6" Grid.Column="0" 
-                    
-                        Margin="50, 0, 50, 0"
-                        HeightRequest="1"
-                        Color="Gray"/>
-                    <BoxView
-                        Grid.Row="7" Grid.Column="0" 
-                    
-                        Margin="80, 0, 80, 0"
-                        HeightRequest="1"
-                        Color="LightGray"/>
-                    <BoxView
-                        Grid.Row="8" Grid.Column="0" 
+                        Grid.Row="3" Grid.Column="0" 
                     
                         Margin="110, 0, 110, 0"
                         HeightRequest="1"
                         Color="Gray"/>
+
                 </Grid>
 
                 <!-- Refresh Rate -->
                 <Grid Grid.Row="8" Margin="0, 10, 0, 0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -238,28 +198,9 @@
                         MaximumTrackColor="Black"
                         HorizontalOptions="FillAndExpand"/>
 
-                    <BoxView
-                        Grid.Row="2" Grid.Column="0" 
-                    
-                        Margin="110, 0, 110, 0"
-                        HeightRequest="1"
-                        Color="Gray"/>
-                    <BoxView
-                        Grid.Row="3" Grid.Column="0" 
-                    
-                        Margin="80, 0, 80, 0"
-                        HeightRequest="1"
-                        Color="LightGray"/>
-                    <BoxView
-                        Grid.Row="4" Grid.Column="0" 
-                    
-                        Margin="50, 0, 50, 0"
-                        HeightRequest="1"
-                        Color="Gray"/>
-
                     <Label
                         x:Name="searchRefreshRate_lbl"
-                        Grid.Row="5" Grid.Column="0" 
+                        Grid.Row="2" Grid.Column="0" 
                         
                         Text="30 minutes"
                         FontAttributes="Bold"
@@ -267,19 +208,7 @@
                         VerticalOptions="Start"/>
 
                     <BoxView
-                        Grid.Row="6" Grid.Column="0" 
-                    
-                        Margin="50, 0, 50, 0"
-                        HeightRequest="1"
-                        Color="Gray"/>
-                    <BoxView
-                        Grid.Row="7" Grid.Column="0" 
-                    
-                        Margin="80, 0, 80, 0"
-                        HeightRequest="1"
-                        Color="LightGray"/>
-                    <BoxView
-                        Grid.Row="8" Grid.Column="0" 
+                        Grid.Row="3" Grid.Column="0" 
                     
                         Margin="110, 0, 110, 0"
                         HeightRequest="1"

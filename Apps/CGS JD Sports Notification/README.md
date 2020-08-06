@@ -6,7 +6,7 @@
 
 I've decided to create this app because when we are on-call working from home I really hate to manually check the queue, so I simple thought to use my skills to create a simple app which will check the queue and send a notification when an open/new ticket it's found.
 
-And to not forget that this it's also helping my colleagues 💪 
+And to not forget thst it's also helping my colleagues 💪 
 
 ## Screenshot (v1.0 build 2080)
 
